@@ -26,25 +26,25 @@ public class Character{
     private String universe;
 
     @Column(nullable = true)
-    private double age;
+    private String role;
 
 
     public Character(){
     }
 
-    public Character(String name, String description, String universe, double age){
+    public Character(String name, String description, String universe, String role){
         this.name = name;
         this.description = description;
         this.universe = universe;
-        this.age = age;
+        this.role = role;
     }
 
-    public Character(Long characterId, String name, String description, String universe, double age){
+    public Character(Long characterId, String name, String description, String universe, String role){
         this.characterId = characterId;
         this.name = name;
         this.description = description;
         this.universe = universe;
-        this.age = age;
+        this.role = role;
     }
 
     public Long getCharacterId(){
@@ -79,11 +79,11 @@ public class Character{
         this.universe = universe;
     }
 
-    public double getAge(){
-        return age;
+    public String getRole(){
+        return role;
     }
 
-    public void setAge(double age){
-        this.age = age;
+    public void setRole(String role){
+        this.role = role;
     }
 }

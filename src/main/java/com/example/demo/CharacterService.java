@@ -31,7 +31,7 @@ public class CharacterService {
             character.setName(updatedCharacter.getName());
             character.setDescription(updatedCharacter.getDescription());
             character.setUniverse(updatedCharacter.getUniverse());
-            character.setAge(updatedCharacter.getAge());
+            character.setRole(updatedCharacter.getRole());
             return characterRepository.save(character);
         })
         .orElse(null);
@@ -41,9 +41,9 @@ public class CharacterService {
         characterRepository.deleteById(id);
     }
 
-    public List<Character> getOlderCharacters(double age){
-        return characterRepository.findOlderCharacters(age);
-    }
+    public List<Character> getCharactersByRole(String role){
+    return characterRepository.findByRole(role);
+}
 
     public List<Character> getCharactersByName(String name){
         return characterRepository.findByName(name);
