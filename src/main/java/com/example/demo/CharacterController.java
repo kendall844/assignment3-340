@@ -12,59 +12,60 @@ public class CharacterController {
 
     private final CharacterService characterService;
 
-    public CharacterController(CharacterService characterService){
+    public CharacterController(CharacterService characterService) {
         this.characterService = characterService;
     }
 
     @GetMapping
-    public ResponseEntity<Collection<Character>> getAllCharacters(){
+    public ResponseEntity<Collection<Character>> getAllCharacters() {
         return ResponseEntity.ok(characterService.getAllCharacters());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Character> getCharacterById(@PathVariable Long id){
+    public ResponseEntity<Character> getCharacterById(@PathVariable Long id) {
         Character character = characterService.getCharacterById(id);
-        if(character != null){
+        if (character != null) {
             return ResponseEntity.ok(character);
-        }else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
+    @GetMapping("/search")
+public ResponseEntity<List<Character>> searchCharacters(@RequestParam String name) {
+    return ResponseEntity.ok(characterService.getCharactersByName(name));
+}
+
     @PostMapping
-    public ResponseEntity<Character> createCharacter(@RequestBody Character character){
+    public ResponseEntity<Character> createCharacter(@RequestBody Character character) {
         Character createdCharacter = characterService.createCharacter(character);
         return ResponseEntity.ok(createdCharacter);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Character> updateCharacter(@PathVariable Long id, @RequestBody Character updatedCharacter){
+    public ResponseEntity<Character> updateCharacter(@PathVariable Long id, @RequestBody Character updatedCharacter) {
         Character character = characterService.updateCharacter(id, updatedCharacter);
-        if(character != null){
+        if (character != null) {
             return ResponseEntity.ok(character);
-        }else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCharacter(@PathVariable Long id){
+    public ResponseEntity<Void> deleteCharacter(@PathVariable Long id) {
         characterService.deleteCharacter(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/universe/{universe}")
-    public ResponseEntity<List<Character>> getCharactersByUniverse(@PathVariable String universe){
+    public ResponseEntity<List<Character>> getCharactersByUniverse(@PathVariable String universe) {
         return ResponseEntity.ok(characterService.getCharactersByUniverse(universe));
     }
 
     @GetMapping("/role/{role}")
-    public ResponseEntity<List<Character>> getCharactersByRole(@PathVariable String role){
+    public ResponseEntity<List<Character>> getCharactersByRole(@PathVariable String role) {
         return ResponseEntity.ok(characterService.getCharactersByRole(role));
     }
 
-    @GetMapping("/search/{name}")
-    public ResponseEntity<List<Character>> getCharactersByName(@PathVariable String name){
-        return ResponseEntity.ok(characterService.getCharactersByName(name));
-    }
 }

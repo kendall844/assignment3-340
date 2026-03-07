@@ -46,7 +46,7 @@ public class CharacterService {
 }
 
     public List<Character> getCharactersByName(String name){
-        return characterRepository.findByName(name);
+        return characterRepository.findByNameContaining(name);
     }
 
     public List<Character> getCharactersByUniverse(String universe){
