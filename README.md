@@ -357,7 +357,7 @@ curl http://localhost:8080/api/characters/universe/Bleach
 ```json
 [
   {
-    "studentId": 2,
+    "characterId": 2,
     "name": "Rukia Kuchiki",
     "description": "Female lead in 'Bleach'",
     "role": "Main",
