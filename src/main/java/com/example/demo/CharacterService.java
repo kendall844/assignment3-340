@@ -1,13 +1,20 @@
 package com.example.demo;
 
 import java.util.List;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class CharacterService {
 
     private final CharacterRepository characterRepository;
+    private static final String UPLOAD_DIR = "src/main/resources/static/images/";
 
     public CharacterService(CharacterRepository characterRepository){
         this.characterRepository = characterRepository;
@@ -52,4 +59,28 @@ public class CharacterService {
     public List<Character> getCharactersByUniverse(String universe){
         return characterRepository.findByUniverse(universe);
     }
+
+    public void savePicture(Character character, MultipartFile picture){
+        if(picture == null || picture.isEmpty()){
+            return;
+        }
+        String ogFile = picture.getOriginalFilename();
+        try{
+            if(ogFile != null && ogFile.contains(".")){
+                String fileExt = ogFile.substring(ogFile.lastIndexOf(".") + 1);
+                String fileName = String.valueOf(character.getCharacterId()) + "." + fileExt;
+                Path filePath = Paths.get(UPLOAD_DIR + fileName);
+
+                InputStream inputStream = picture.getInputStream();
+
+                Files.createDirectories(Paths.get(UPLOAD_DIR));
+                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+                character.setPicturePath(fileName);
+                characterRepository.save(character);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
+

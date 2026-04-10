@@ -32,9 +32,9 @@ public class CharacterController {
     }
 
     @GetMapping("/search")
-public ResponseEntity<List<Character>> searchCharacters(@RequestParam String name) {
-    return ResponseEntity.ok(characterService.getCharactersByName(name));
-}
+    public ResponseEntity<List<Character>> searchCharacters(@RequestParam String name) {
+        return ResponseEntity.ok(characterService.getCharactersByName(name));
+    }
 
     @PostMapping
     public ResponseEntity<Character> createCharacter(@RequestBody Character character) {
