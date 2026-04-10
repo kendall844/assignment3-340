@@ -3,15 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Character Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
+
 </head>
 
 <body>
+
     <nav class="navbar navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/characters/">Female Anime Character Gallery</a>
@@ -34,19 +33,32 @@
         </div>
     </nav>
 
-    <div class="container my-5 text-center">
-        <img src="/images/${character.picturePath!'default.jpeg'}" alt="${character.name}">
-        <h1>${character.name}</h1>
+    <div class="container my-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
 
-        <h2> Role </h2>
-        <p> ${character.role}</p>
+            <#list gallery as character>
 
-        <h2> Universe </h2>
-        <p> ${character.universe} </p>
+                <div class="col">
+                    <div class="card h-100">
 
-        <h2> A Little Bit About ${character.name}</h2>
-        <p> ${character.description} </p>
+                        <a href="/characters/view/${character.characterId}">
+                            <img src="/images/${character.picturePath!'default.jpeg'}" class="card-img-top"
+                                alt="${character.name}">
+                        </a>
+
+                        <div class="card-body">
+                            <h5 class="card-title">${character.name}</h5>
+                            <p class="card-text">${character.description}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </#list>
+            
+        </div>
     </div>
+
+
 </body>
 
 </html>

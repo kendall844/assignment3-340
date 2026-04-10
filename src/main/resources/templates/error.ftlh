@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
+
     <nav class="navbar navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/characters/">Female Anime Character Gallery</a>
@@ -34,19 +34,11 @@
         </div>
     </nav>
 
-    <div class="container my-5 text-center">
-        <img src="/images/${character.picturePath!'default.jpeg'}" alt="${character.name}">
-        <h1>${character.name}</h1>
+    <div class="container" style="margin-top: 15px;">
+        <h1>${title}</h1>
+        <p>${errorMessage}</p>
+        <a href="/gallery" class="btn btn-outline-primary">Back to Home</a>
 
-        <h2> Role </h2>
-        <p> ${character.role}</p>
-
-        <h2> Universe </h2>
-        <p> ${character.universe} </p>
-
-        <h2> A Little Bit About ${character.name}</h2>
-        <p> ${character.description} </p>
-    </div>
 </body>
 
 </html>

@@ -14,68 +14,61 @@
 <body>
     <nav class="navbar navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Female Anime Character Gallery</a>
+            <a class="navbar-brand" href="/characters/">Female Anime Character Gallery</a>
+
             <form class="d-flex ms-4">
                 <input class="form-control form-control-sm" type="search" placeholder="Search">
             </form>
 
-
             <ul class="navbar-nav flex-row ms-auto">
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="/characters/">Home</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="details.html">Details</a>
+                    <a class="nav-link" href="/characters/about">About</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="about.html">About</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="new-character-form.html">Add a Character</a>
+                    <a class="nav-link" href="/characters/add">Add a Character</a>
                 </li>
             </ul>
         </div>
-        <div class="container my-5">
-            <h1 class="mb-4 text-center">${title}</h1>
+    </nav>
+    <div class="container my-5">
+        <h1 class="mb-4 text-center">${title}</h1>
 
-            <form>
+        <form action="/characters/" method="post" enctype="multipart/form-data">
 
-                <div class="mb-3">
-                    <label for="character-name" class="form-label">Character Name</label>
-                    <input type="text" id="character-name" class="form-control" placeholder="Enter character name">
-                </div>
+            <div class="mb-3">
+                <label class="form-label">Character Name</label>
+                <input type="text" name="name" class="form-control">
+            </div>
 
-                <div class="mb-3">
-                    <label for="character-image" class="form-label">Image Filename or URL</label>
-                    <input type="text" id="character-image" class="form-control" placeholder="images/character.jpg">
-                </div>
+            <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" name="picture" class="form-control">
+            </div>
 
-                <div class="mb-3">
-                    <label for="character-role" class="form-label">Role</label>
-                    <input type="text" id="character-role" class="form-control" placeholder="Enter the role">
-                </div>
+            <div class="mb-3">
+                <label class="form-label">Role</label>
+                <input type="text" name="role" class="form-control">
+            </div>
 
-                <div class="mb-3">
-                    <label for="character-universe" class="form-label">Universe</label>
-                    <input type="text" id="character-universe" class="form-control" placeholder="Enter the universe">
-                </div>
+            <div class="mb-3">
+                <label class="form-label">Universe</label>
+                <input type="text" name="universe" class="form-control">
+            </div>
 
-                <div class="mb-3">
-                    <label for="character-description" class="form-label">
-                        Character Description
-                    </label>
-                    <textarea id="character-description" class="form-control" rows="4"
-                        placeholder="Add a description here."></textarea>
-                </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="4"></textarea>
+            </div>
 
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">
-                        Add Character
-                    </button>
-                </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Add Character</button>
+            </div>
 
-            </form>
-        </div>
+        </form>
+    </div>
 
 </body>
 

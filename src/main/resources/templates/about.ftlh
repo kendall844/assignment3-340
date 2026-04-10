@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Female Anime Character Gallery</a>
+            <a class="navbar-brand" href="/characters/">Female Anime Character Gallery</a>
 
             <form class="d-flex ms-4">
                 <input class="form-control form-control-sm" type="search" placeholder="Search">
@@ -22,16 +22,13 @@
 
             <ul class="navbar-nav flex-row ms-auto">
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="/characters/all">Home</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="details.html">Details</a>
+                    <a class="nav-link" href="/characters/">Home</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="/characters/about">About</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="/characters/new-character-form">Add a Character</a>
+                    <a class="nav-link" href="/characters/add">Add a Character</a>
                 </li>
             </ul>
         </div>
