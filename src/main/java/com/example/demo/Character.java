@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "characters")
 
-public class Character{
+public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,18 +28,19 @@ public class Character{
     @Column(nullable = true)
     private String role;
 
+    private String picturePath;
 
-    public Character(){
+    public Character() {
     }
 
-    public Character(String name, String description, String universe, String role){
+    public Character(String name, String description, String universe, String role) {
         this.name = name;
         this.description = description;
         this.universe = universe;
         this.role = role;
     }
 
-    public Character(Long characterId, String name, String description, String universe, String role){
+    public Character(Long characterId, String name, String description, String universe, String role) {
         this.characterId = characterId;
         this.name = name;
         this.description = description;
@@ -47,43 +48,47 @@ public class Character{
         this.role = role;
     }
 
-    public Long getCharacterId(){
+    public Long getCharacterId() {
         return characterId;
     }
 
-    public void setCharacterId(Long characterId){
+    public void setCharacterId(Long characterId) {
         this.characterId = characterId;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getDescription (){
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getUniverse (){
+    public String getUniverse() {
         return universe;
     }
 
-    public void setUniverse(String universe){
+    public void setUniverse(String universe) {
         this.universe = universe;
     }
 
-    public String getRole(){
+    public String getRole() {
         return role;
     }
 
-    public void setRole(String role){
+    public void setRole(String role) {
         this.role = role;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 }

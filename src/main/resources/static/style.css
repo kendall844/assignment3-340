@@ -1,0 +1,86 @@
+body {
+    background-color: #dc7da3;
+    color: #672036;
+}
+
+.navbar {
+    background-color: #d63384;
+}
+
+.navbar-brand {
+    color: #672036;
+}
+
+.navbar-brand:hover {
+    color: #901244;
+}
+
+.form-control,
+.form-select {
+    background-color: #f8a8c8;
+    border: 2px solid #d63384;
+    color: #672036;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #c2185b;
+    box-shadow: 0 0 0 0.2rem rgba(214, 51, 132, 0.25);
+}
+
+.btn-primary {
+    background-color: #f8a8c8;
+    border-color: #d63384;
+    color: #672036;
+}
+
+.btn-primary:hover {
+    background-color: #901244;
+    border-color: #c2185b;
+    color: #ffffff;
+}
+
+.card {
+    background-color: #fff0f6;
+    border: 10px solid #f3a6c8;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s ease;
+}
+
+
+.card-img-top {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    background-color: #fff0f6;
+    flex-grow: 1;
+    text-align: center;
+}
+
+
+.card-text {
+    color: #672036;
+    font-weight: bold;
+    font-size: 8pt;
+    line-height: 1.3;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+
+footer a {
+    color: #c2185b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
