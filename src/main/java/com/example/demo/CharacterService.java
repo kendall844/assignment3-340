@@ -33,12 +33,15 @@ public class CharacterService {
     }
 
     public Character updateCharacter(Long id, Character updatedCharacter) {
+
         return characterRepository.findById(id)
                 .map(character -> {
+
                     character.setName(updatedCharacter.getName());
-                    character.setDescription(updatedCharacter.getDescription());
                     character.setUniverse(updatedCharacter.getUniverse());
                     character.setRole(updatedCharacter.getRole());
+                    character.setDescription(updatedCharacter.getDescription());
+
                     return characterRepository.save(character);
                 })
                 .orElse(null);
@@ -62,25 +65,31 @@ public class CharacterService {
 
     public void savePicture(Character character, MultipartFile picture) {
 
+        if (picture == null || picture.isEmpty()) {
+            return;
+        }
+
+        String originalFileName = picture.getOriginalFilename();
+
         try {
-            if (picture == null || picture.isEmpty()) {
-                return;
+            if (originalFileName != null && originalFileName.contains(".")) {
+
+                String fileExtension = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+
+                String fileName = character.getCharacterId() + "." + fileExtension;
+
+                Path filePath = Paths.get(UPLOAD_DIR + fileName);
+
+                Files.createDirectories(filePath.getParent());
+
+                try (InputStream inputStream = picture.getInputStream()) {
+                    Files.copy(inputStream, filePath,
+                            StandardCopyOption.REPLACE_EXISTING);
+                }
+
+                character.setPicturePath(fileName);
+                characterRepository.save(character);
             }
-
-            String uploadDir = System.getProperty("user.dir") + "/uploads/";
-            Files.createDirectories(Paths.get(uploadDir));
-
-            String originalName = picture.getOriginalFilename();
-            String fileName = character.getCharacterId() + "_" + originalName;
-
-            Path filePath = Paths.get(uploadDir, fileName);
-
-            try (InputStream inputStream = picture.getInputStream()) {
-                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-            }
-
-            character.setPicturePath(fileName);
-            characterRepository.save(character);
 
         } catch (Exception e) {
             e.printStackTrace();

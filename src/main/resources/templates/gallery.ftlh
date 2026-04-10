@@ -42,8 +42,7 @@
                     <div class="card h-100">
 
                         <a href="/characters/view/${character.characterId}">
-                            <img src="/images/${character.picturePath!'default.jpeg'}" class="card-img-top"
-                                alt="${character.name}">
+                            <img src="/images/${character.picturePath!'kikoru.jpg'}" class="card-img-top" alt="${character.name}">
                         </a>
 
                         <div class="card-body">
@@ -54,7 +53,7 @@
                     </div>
                 </div>
             </#list>
-            
+
         </div>
     </div>
 

@@ -58,23 +58,35 @@ public class UiController {
         if (newCharacter != null) {
             characterService.savePicture(newCharacter, picture);
             return "redirect:/characters/view/" + newCharacter.getCharacterId();
-        } else {
-            return "redirect:/characters/add?error=true";
         }
+
+        return "redirect:/characters/add?error=true";
     }
 
     @PostMapping("/update/{id}")
     public String updateCharacter(@PathVariable Long id,
-            Character updatedCharacter,
-            MultipartFile picture) {
+            @ModelAttribute Character updatedCharacter,
+            @RequestParam("picture") MultipartFile picture) {
 
         Character character = characterService.updateCharacter(id, updatedCharacter);
 
         if (character != null) {
-            characterService.savePicture(character, picture);
+
+            if (picture != null && !picture.isEmpty()) {
+                characterService.savePicture(character, picture);
+            }
+
             return "redirect:/characters/view/" + character.getCharacterId();
-        } else {
-            return "redirect:/characters/update/" + id + "?error=true";
         }
+
+        return "redirect:/characters/updateForm/" + id + "?error=true";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteCharacter(@PathVariable Long id) {
+
+        characterService.deleteCharacter(id);
+
+        return "redirect:/characters/";
     }
 }

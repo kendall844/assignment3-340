@@ -47,6 +47,22 @@
         <h2> A Little Bit About ${character.name}</h2>
         <p> ${character.description} </p>
     </div>
+
+    <form action="/characters/update/${character.characterId?c}" method="post" enctype="multipart/form-data">
+
+        <input type="text" name="name" value="${character.name}" />
+        <input type="text" name="universe" value="${character.universe}" />
+        <input type="text" name="role" value="${character.role}" />
+        <textarea name="description">${character.description}</textarea>
+
+        <input type="file" name="picture" />
+
+        <button type="submit">Update</button>
+
+        <a href="/characters/delete/${character.characterId?c}" class="btn btn-danger" style="float:right;">
+            Delete
+        </a>
+    </form>
 </body>
 
 </html>
